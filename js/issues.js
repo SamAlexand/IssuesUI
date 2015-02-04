@@ -17,10 +17,10 @@ var issues = issues || {};
 	issues.IssuesListView = Backbone.View.extend({
 
 		// Page location to act upon
-		el: "#rails-app-target",
+		el: "#issues-app-target",
 
 		// Template to apply to above page location
-		template : _.template($('#template-rails-issues').html()),
+		template : _.template($('#template-issues').html()),
 
 		// Events for this view
 		events : {
@@ -73,7 +73,7 @@ var issues = issues || {};
 	// View for the Detail View
 	issues.IssuesDetailView = Backbone.View.extend({
 		// Page location to act upon
-		el: "#rails-app-target",
+		el: "#issues-app-target",
 
 		events: {
 			"click #close_issue" : function(e) {
@@ -83,7 +83,7 @@ var issues = issues || {};
 		},
 
 		// Template to apply to above page location
-		template : _.template($('#template-rails-issue-detail').html()),
+		template : _.template($('#template-issue-detail').html()),
 
 		initialize: function(options) {
 			this.options = options;
@@ -135,7 +135,7 @@ var issues = issues || {};
 			detailModel.fetch().done(function() {
 				new issues.IssuesDetailView({
 					model: detailModel,
-					el: "#rails-app-target"
+					el: "#issues-app-target"
 				}).render();
 			});
  
