@@ -1,6 +1,7 @@
+/* This is a quick hack to keep Bootstrap from overriding the default CSS in a Portal 8.5 installation. */
+
 .issues{
     font-size: 14px;
-
 }
 
 html {
