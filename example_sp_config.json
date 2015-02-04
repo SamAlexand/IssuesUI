@@ -1,0 +1,19 @@
+{
+   "excludes": [
+   "node_modules",
+      "^bin$",
+      "^lib$",
+      "^src$",
+      "^\\.classpath$",
+      "^\\.project$",
+      "^sp-config.json$",
+      "^sp-cmdln.log$",
+      "^sp.bat$",
+      "^sp.sh$"
+   ],
+   "mainHtmlFile": "index.html",
+   "portalUser": "wpsadmin",
+   "scriptPortletServer": "http:\/\/someserver:10039",
+   "portalPassword": "password goes here",
+   "wcmContentID": "wcm content id goes here"
+}

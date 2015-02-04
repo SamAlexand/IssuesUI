@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	     <meta charset="utf-8">
+	     
+	     <meta name="viewport" content="width=device-width, initial-scale=1">
+	     
+	     <title>Issues</title>
+
+	     <!-- TODO: Use Bower for dependency management -->
+	     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	      <link rel="stylesheet" href="css/issues.css">
+
+	     <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+	     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+	     <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+	</head> 
+ 
+	<!-- Underscore Template for List of issues -->
+	<script type="text/template" id="template-rails-issues">
+		<table style="width: auto;" class="table table-hover">
+			<thead>
+				<tr>
+					<th>Issue No.</th>
+		            <th>Reporter</th>
+		            <th>Assigned</th>
+		            <th>Labels</th>
+                    <th>Title</th>
+		         
+				</tr>
+			</thead>
+			<tbody>
+				<% _.each(collection, function(issue) { %>
+					<tr id="issue_<%= issue._id %>" class="issue_row bth-hover" data-issue-no="<%= issue._id%>">
+						<td class="">
+		            		<img src="img/glyphicons_360_bug.png" alt="bug"> <%= issue._id.substring((issue._id.length-7)) %>				
+		            	</td>
+		            	<td class="">
+		            		<%= issue.reporter %>		
+		            	</td>
+		            	<td class="">
+                   
+                        	<%= issue.assignedTo %>
+                        </td>
+  
+		            	<td class="">
+		            		<% 	_.each(issue.tags, function(tag) { %>
+		            			<span class="label label-primary"><%= tag %></span>
+		            		<% }); %>
+		            	</td>
+		            	<td class=""><%= issue.description %></td>
+		          	</tr>
+		      	<% }); %>
+	   		</tbody>
+		</table>
+
+		<sub>Icons courtesy of <a title="" target="" href="http://glyphicons.com/">Glyphicons</a></sub>
+
+	</script>
+
+
+	<!-- Underscore Template for an Issue Detail -->
+	<script type="text/template" id="template-rails-issue-detail">
+		
+			<div class="panel panel-default">
+			   <div class="panel-heading">
+			      <h2 class="panel-title"> <%= _id.substring((_id.length-7)) %>: <%= description %></h2> 
+			   </div>
+			   <div class="panel-body">
+			      <div class="row">
+			         <div class="col-md-12">
+			            <div class="row">
+			               <div class="col-md-2">
+			                  <div class="thumbnail">
+			                     <img width="100" height="100" src="img/sam.jpeg" alt="">
+			                     <div class="caption">
+			                         Reporter: <%= reporter %>
+			                     </div>
+			                  </div>
+			               </div>
+			               <div class="col-md-10">
+			                  <div class="row">
+			                     <div class="col-md-12">
+			                        <strong>State:</strong>  active
+			                     </div>
+			                  </div>
+			                  <div class="row">
+			                     <div class="col-md-12">
+			                        <strong>Labels:</strong> 
+			                        <% 	_.each(tags, function(tag) { %>
+			                        <span class="label label-primary"><%= tag %></span>
+			                        <% }); %>
+			                     </div>
+			                  </div>
+			                  <div class="row">
+			                     <div class="col-md-12">
+			                        <div>
+			                           <strong>Description:</strong> 
+			                           <p> <pre><%= body %></pre>	</p>
+			                        </div>
+			                     </div>
+			                  </div>
+			               </div>
+			            </div>
+			         </div>
+			      </div>
+			   </div>
+
+
+      <nav>
+         <ul class="pager">
+            <li><a id="close_issue" href="#">Close</a></li>
+         </ul>
+      </nav>
+	</script>
+
+	
+	<!-- The body of the html page.  Single DIV we'll replace with backbone -->
+	<body>
+		<div class="issues">
+		
+			<div class="page-header">
+  				<h1>Issues Tracking</h1> 
+			</div>
+			 
+			<!-- ----------------------------- -->
+			<!-- Spot on the page we'll update -->
+			<!-- ----------------------------- -->
+			<div id="rails-app-target"></div>
+
+      </div>
+
+		<script src="js/railsissues.js"></script>
+	
+	</body>
+
+</html>
