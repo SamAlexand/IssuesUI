@@ -8,9 +8,10 @@ var issues = issues || {};
  
 (function ($) { 
 
+	// Update the endpoint url to point to the IssuesSvc you deployed to Bluemix!
 	issues.Constants = {
-		//"issues_api_url": "http://issues-svc-3.mybluemix.net/api/issues",	// change to other repos if desired
-		"issues_api_url": "http://localhost:8000/api/issues"	// change to other repos if desired
+		//"issues_api_url": "http://<your app name>.mybluemix.net/api/issues",	// change to other repos if desired
+		"issues_api_url": "http://localhost:8000/api/issues"	// IssuesSvc running locally in Node/Mongo
 	};
 	 
 	// View for the List View
@@ -108,7 +109,7 @@ var issues = issues || {};
 	
 	});
 
-	// Router for Rails Issues application. 
+	// Router for Issues application. 
 	issues.IssuesRouter = Backbone.Router.extend({
 		routes: {
 			'' : 'default',
