@@ -10,8 +10,8 @@ Dependencies
 </h3>
 - <a href="https://github.com/SamAlexand/IssuesService"> IssuesService</a> should be deployed on Bluemix. Verify that you can manually call the REST service. For example http://<myservicename>.mybluemix.net/api/issues
 - Make note of your REST endpoint URL; you'll need it when you configure the UI to make AJAX requests.
-- Requires Portal 8.5
-- Requires IBM Script Portlet.  Get it <a href="https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=DDB5C467D991413285257C67002476E0 ">from here</a> and follow the installation steps <a href="http://www-01.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/welcome/script_welcome.html">here.</a>
+- If you plan to use the IBM Script Portal, then this requires Portal 8 or 8.5. Or, it can run standalone on any HTTP server (i.e. XAMPP or Apache)
+- If you would like to run this in Portal, then it requires IBM Script Portlet.  Get it <a href="https://greenhouse.lotus.com/plugins/plugincatalog.nsf/assetDetails.xsp?action=editDocument&documentId=DDB5C467D991413285257C67002476E0 ">from here</a> and follow the installation steps <a href="http://www-01.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/welcome/script_welcome.html">here.</a>
 
 <h3>Installation with the IBM Script Portlet</h3>
 - Clone or download this IssuesUI project
