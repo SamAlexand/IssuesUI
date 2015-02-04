@@ -4,17 +4,17 @@
 */
 'use strict';
  
-var railsissues = railsissues || {};
+var issues = issues || {};
  
 (function ($) { 
 
-	railsissues.Constants = {
+	issues.Constants = {
 		//"issues_api_url": "http://issues-svc-3.mybluemix.net/api/issues",	// change to other repos if desired
 		"issues_api_url": "http://localhost:8000/api/issues"	// change to other repos if desired
 	};
 	 
 	// View for the List View
-	railsissues.RailsIssuesListView = Backbone.View.extend({
+	issues.IssuesListView = Backbone.View.extend({
 
 		// Page location to act upon
 		el: "#rails-app-target",
@@ -54,9 +54,9 @@ var railsissues = railsissues || {};
 	});  
 
 	// A Collection for Issues
-	railsissues.RailsIssuesCollections = Backbone.Collection.extend({
+	issues.IssuesCollections = Backbone.Collection.extend({
 		
-		url: railsissues.Constants.issues_api_url,
+		url: issues.Constants.issues_api_url,
 		
 		initialize: function(options) {}, 
 
@@ -71,7 +71,7 @@ var railsissues = railsissues || {};
 	});
 
 	// View for the Detail View
-	railsissues.RailsIssuesDetailView = Backbone.View.extend({
+	issues.IssuesDetailView = Backbone.View.extend({
 		// Page location to act upon
 		el: "#rails-app-target",
 
@@ -97,7 +97,7 @@ var railsissues = railsissues || {};
 	});
 
 	// Model to drive the Detail View
-	railsissues.RailsIssuesDetailViewModel = Backbone.Model.extend({
+	issues.IssuesDetailViewModel = Backbone.Model.extend({
 		// URL will be passed in dynamically
 		url: function() {
 			return this.runtimeUrl;
@@ -109,7 +109,7 @@ var railsissues = railsissues || {};
 	});
 
 	// Router for Rails Issues application. 
-	railsissues.RailsIssuesRouter = Backbone.Router.extend({
+	issues.IssuesRouter = Backbone.Router.extend({
 		routes: {
 			'' : 'default',
         	'issue/:id' : 'goToIssue'
@@ -126,29 +126,29 @@ var railsissues = railsissues || {};
     	
     	goToIssue: function( issueNum ) {
 
-        	var issueUrl = railsissues.Constants.issues_api_url + "/" + issueNum;
+        	var issueUrl = issues.Constants.issues_api_url + "/" + issueNum;
 
-        	var detailModel = new railsissues.RailsIssuesDetailViewModel({
+        	var detailModel = new issues.IssuesDetailViewModel({
 				url: issueUrl
 			});
 
 			detailModel.fetch().done(function() {
-				new railsissues.RailsIssuesDetailView({
+				new issues.IssuesDetailView({
 					model: detailModel,
 					el: "#rails-app-target"
 				}).render();
 			});
-
+ 
     	}
 	});
 	
 	// Create the List View, passing it a new Collection of Issues
-	var listView = new railsissues.RailsIssuesListView({
-				collection: new railsissues.RailsIssuesCollections()
+	var listView = new issues.IssuesListView({
+				collection: new issues.IssuesCollections()
 	});
 
 	// Start the Backbone Router
-	var router = new railsissues.RailsIssuesRouter();	
+	var router = new issues.IssuesRouter();	
 	Backbone.history.start();
 
 })(jQuery);
