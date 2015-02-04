@@ -20,4 +20,4 @@ Dependencies
 - Update the issues_api_url variable in issues.js to point to your IssuesService rest endpoint
 - Assuming you read and configured the Script Portlet Command Line application correctly and you've configured a valid sp_config.json, run "sp.bat push" (Windows) or "sp.sh push" (Linux) to push IssuesUI to the Script Portlet instance.
 
-
+** Note that this application is for demonstration purposes only and is not supported by my employer. **
